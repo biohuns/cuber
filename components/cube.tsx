@@ -5,13 +5,13 @@ import styles from "../styles/components/Cube.module.css";
 type Props = {} | ICubeOptions;
 
 export default function Cube(props: Props) {
-  const cubeRef = useRef<HTMLDivElement>();
+  const cubeRef = useRef<HTMLDivElement>(null);
 
   const clearCube = useCallback(() => {
-    if (!cubeRef.current.children) return;
-    Array.from(cubeRef.current.children).forEach((child) =>
-      cubeRef.current.removeChild(child)
-    );
+    if (!cubeRef.current || !cubeRef.current.children) return;
+    while (cubeRef.current.firstChild) {
+      cubeRef.current.removeChild(cubeRef.current.firstChild);
+    }
   }, []);
 
   useEffect(() => {
@@ -24,5 +24,5 @@ export default function Cube(props: Props) {
     return clearCube;
   }, [props, clearCube]);
 
-  return <div ref={cubeRef} className={styles.cube}></div>;
+  return <div ref={cubeRef} className={styles.host}></div>;
 }
