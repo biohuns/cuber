@@ -14,6 +14,7 @@ export default function CustomDocument() {
           href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap"
           rel="stylesheet"
         />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <body>
         <Main></Main>
