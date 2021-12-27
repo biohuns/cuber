@@ -6,9 +6,7 @@ import Card from "./Card";
 type Props = {};
 
 export default function StopwatchCard({}: Props) {
-  const { isRunning, ms, start, pause, reset } = useStopwatch({
-    limit: 3600000,
-  });
+  const { isRunning, ms, start, pause, reset } = useStopwatch({});
   const durationFormat = useDurationFormat();
   const formatted = durationFormat(ms);
 

@@ -1,12 +1,18 @@
 import { useState } from "react";
 import useInterval from "./interval";
 
+const intervalMsDefault = 10;
+const limitSecDefault = 3600;
+
 type Props = {
-  interval?: number;
-  limit?: number;
+  intervalMs?: number;
+  limitSec?: number;
 };
 
-export default function useStopwatch({ interval = 10, limit }: Props) {
+export default function useStopwatch({
+  intervalMs = intervalMsDefault,
+  limitSec = limitSecDefault,
+}: Props) {
   const [isRunning, setIsRunning] = useState(false);
   const [startMs, setStartMs] = useState(NaN);
   const [ms, setMs] = useState(0);
@@ -29,9 +35,9 @@ export default function useStopwatch({ interval = 10, limit }: Props) {
   useInterval(
     () => {
       setMs(Number.isNaN(startMs) ? 0 : getNowMs() - startMs);
-      if (limit !== undefined && limit < ms) reset();
+      if (limitSec !== undefined && limitSec * 1000 < ms) reset();
     },
-    isRunning ? interval : undefined
+    isRunning ? intervalMs : undefined
   );
 
   return { isRunning, ms, start, pause, reset };
