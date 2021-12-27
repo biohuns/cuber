@@ -11,6 +11,7 @@ export default function Card({ title, children }: Props) {
         .root {
           padding: 16px;
           color: var(--text-color);
+          min-width: 288px;
 
           background-color: #ffffff0f;
           border: 1px solid #ffffff1a;
