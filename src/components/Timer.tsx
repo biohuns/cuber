@@ -1,5 +1,4 @@
 import { useTimer } from "react-timer-hook";
-import styles from "../styles/components/Timer.module.css";
 
 type Props = {};
 
@@ -12,7 +11,7 @@ export default function Timer({}: Props) {
   });
 
   return (
-    <div className={styles.host}>
+    <div>
       <h2>Timer</h2>
       <div>
         <span>{days}</span>

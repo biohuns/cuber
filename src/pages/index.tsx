@@ -1,10 +1,9 @@
-import Timer from "../components/Timer";
+import StopwatchCard from "../components/StopwatchCard";
 
 export default function Home() {
   return (
     <main>
-      <Timer></Timer>
-      {/* <Cube width={300} height={300}></Cube> */}
+      <StopwatchCard />
     </main>
   );
 }

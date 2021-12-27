@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef } from "react";
 import { cubeSVG, ICubeOptions } from "sr-visualizer";
-import styles from "../styles/components/Cube.module.css";
 
 type Props = {} | ICubeOptions;
 
@@ -24,5 +23,5 @@ export default function Cube(props: Props) {
     return clearCube;
   }, [props, clearCube]);
 
-  return <div ref={cubeRef} className={styles.host}></div>;
+  return <div ref={cubeRef}></div>;
 }

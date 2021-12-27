@@ -22,6 +22,7 @@ body {
 
 body {
   height: 100vh;
+  padding: 16px;
 }
 
 /* Avoid Chrome to see Safari hack */
