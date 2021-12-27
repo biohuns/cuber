@@ -1,43 +1,66 @@
 import { ReactNode } from "react";
 
 type Props = {
-  color?: "blue" | "green" | "red";
+  color?: "red" | "green" | "blue" | "orange";
+  disabled?: boolean;
   onClick?: () => void;
   children?: ReactNode;
 };
 
-export default function Button({ color = "blue", onClick, children }: Props) {
-  const hex = (() => {
-    switch (color) {
-      case "blue":
-        return "005eff";
-      case "green":
-        return "00aa11";
-      case "red":
-        return "ff0000";
-      default:
-        return "005eff";
-    }
-  })();
-
+export default function Button({
+  disabled,
+  color = "blue",
+  onClick,
+  children,
+}: Props) {
   return (
-    <>
-      <button onClick={onClick}>{children}</button>
+    <button
+      disabled={disabled}
+      onClick={onClick}
+      className={["root", color].join(" ")}
+    >
+      {children}
       <style jsx>{`
-        button {
-          display: inline-block;
+        .root {
           margin: 4px;
-          padding: 8px 16px;
-          background-color: #${hex}77;
-          border: 1px solid #${hex}99;
-          border-radius: 5px;
-          /* backdrop-filter: blur(5px);
-          -webkit-backdrop-filter: blur(5px); */
+          padding: 8px 12px;
+          border-radius: 6px;
+          font-size: 1rem;
         }
-        button:hover {
-          background-color: #${hex}aa;
+        .root:disabled,
+        .root:hover:disabled {
+          background-color: #33333377;
+          border: 1px solid #33333399;
+        }
+        .red {
+          background-color: #ff000077;
+          border: 1px solid #ff000099;
+        }
+        .red:hover {
+          background-color: #ff0000aa;
+        }
+        .green {
+          background-color: #00aa1177;
+          border: 1px solid #00aa1199;
+        }
+        .green:hover {
+          background-color: #00aa11aa;
+        }
+        .blue {
+          background-color: #005eff77;
+          border: 1px solid #005eff99;
+        }
+        .blue:hover {
+          background-color: #005effaa;
+        }
+        .orange {
+          background-color: #ffa50077;
+          border: 1px solid #ffa50099;
+        }
+        .orange:hover {
+          background-color: #ffa500aa;
         }
       `}</style>
-    </>
+    </button>
   );
 }

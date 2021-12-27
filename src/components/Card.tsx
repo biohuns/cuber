@@ -1,13 +1,14 @@
 import { ReactNode } from "react";
 
-type Props = { children: ReactNode };
+type Props = { title?: string; children: ReactNode };
 
-export default function Card({ children }: Props) {
+export default function Card({ title, children }: Props) {
   return (
-    <>
-      <div>{children}</div>
+    <div className="root">
+      {title ? <div className="header">{title}</div> : null}
+      {children}
       <style jsx>{`
-        div {
+        .root {
           padding: 16px;
           color: var(--text-color);
 
@@ -17,7 +18,12 @@ export default function Card({ children }: Props) {
           backdrop-filter: blur(10px);
           -webkit-backdrop-filter: blur(10px);
         }
+        .header {
+          font-size: 1.4rem;
+          font-weight: bold;
+          margin-bottom: 8px;
+        }
       `}</style>
-    </>
+    </div>
   );
 }

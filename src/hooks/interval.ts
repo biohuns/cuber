@@ -1,27 +1,19 @@
 import { useEffect, useRef } from "react";
 
-type Props = {
-  intervalMilliSeconds?: number;
-  onInterval?: () => void;
-};
-
-export default function useInterval({
-  intervalMilliSeconds,
-  onInterval,
-}: Props) {
-  const onIntervalRef = useRef<Props["onInterval"]>();
+export default function useInterval(callback: () => void, ms?: number) {
+  const onIntervalRef = useRef<() => void>();
 
   useEffect(() => {
-    onIntervalRef.current = onInterval;
-  });
+    onIntervalRef.current = callback;
+  }, [callback]);
 
   useEffect(() => {
-    if (intervalMilliSeconds === undefined) return;
+    if (ms === undefined) return;
 
     const interval = setInterval(() => {
       if (!onIntervalRef.current) return;
-      onIntervalRef.current?.();
-    }, intervalMilliSeconds);
+      onIntervalRef.current();
+    }, ms);
     return () => clearInterval(interval);
-  }, [intervalMilliSeconds, onInterval]);
+  }, [ms]);
 }

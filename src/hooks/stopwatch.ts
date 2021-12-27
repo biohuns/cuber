@@ -1,35 +1,38 @@
 import { useState } from "react";
 import useInterval from "./interval";
 
-export default function useStopwatch() {
-  const [isRunning, setIsRunning] = useState(false);
-  const [startMilliSeconds, setStartMilliSeconds] = useState(NaN);
-  const [seconds, setSeconds] = useState(0);
+type Props = {
+  interval?: number;
+};
 
-  useInterval({
-    intervalMilliSeconds: isRunning ? 10 : undefined,
-    onInterval: () => {
-      setSeconds(
-        Number.isNaN(startMilliSeconds)
-          ? 0
-          : (getNowMilliSeconds() - startMilliSeconds) / 1000
-      );
-    },
-  });
+export default function useStopwatch({ interval = 10 }: Props) {
+  const [isRunning, setIsRunning] = useState(false);
+  const [startMs, setStartMs] = useState(NaN);
+  const [ms, setMs] = useState(0);
+
+  useInterval(
+    () => setMs(Number.isNaN(startMs) ? 0 : getNowMs() - startMs),
+    isRunning ? interval : undefined
+  );
 
   const start = () => {
-    setStartMilliSeconds(getNowMilliSeconds());
+    setStartMs(getNowMs() - ms);
     setIsRunning(true);
+  };
+
+  const pause = () => {
+    setIsRunning(false);
   };
 
   const reset = () => {
     setIsRunning(false);
-    setStartMilliSeconds(NaN);
+    setStartMs(NaN);
+    setMs(0);
   };
 
-  return { isRunning, seconds, start, reset };
+  return { isRunning, ms, start, pause, reset };
 }
 
-function getNowMilliSeconds() {
+function getNowMs() {
   return new Date().getTime();
 }

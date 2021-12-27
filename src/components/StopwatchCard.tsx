@@ -5,28 +5,35 @@ import Card from "./Card";
 type Props = {};
 
 export default function StopwatchCard({}: Props) {
-  // const { seconds, minutes, hours, days, isRunning, start, pause, reset } =
-  //   useStopwatch({ autoStart: false });
-
-  const { isRunning, seconds, start, reset } = useStopwatch();
+  const { isRunning, ms, start, pause, reset } = useStopwatch({});
 
   return (
-    <Card>
-      <div style={{ textAlign: "center" }}>
-        <h1>react-timer-hook</h1>
-        <p>Stopwatch Demo</p>
-        <div style={{ fontSize: "100px" }}>
-          <span>{seconds.toFixed(2)}</span>
-        </div>
-        <p>{isRunning ? "Running" : "Not running"}</p>
-        <Button onClick={start} color="green">
+    <Card title="Stopwatch">
+      <div className="time">
+        <span>{(ms / 1000).toFixed(2)}</span>
+      </div>
+      <div className="buttons">
+        <Button onClick={start} disabled={isRunning} color="green">
           Start
         </Button>
-        {/* <Button onClick={pause}>Pause</Button> */}
-        <Button onClick={reset} color="red">
-          Stop
+        <Button onClick={pause} disabled={!isRunning} color="orange">
+          Pause
+        </Button>
+        <Button onClick={reset} disabled={!isRunning && ms === 0} color="red">
+          Reset
         </Button>
       </div>
+      <style jsx>{`
+        .time {
+          font-size: 3rem;
+          margin-bottom: 8px;
+          text-align: right;
+        }
+        .buttons {
+          display: flex;
+          justify-content: space-between;
+        }
+      `}</style>
     </Card>
   );
 }
