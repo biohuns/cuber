@@ -6,7 +6,7 @@ export default function CustomApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Cuber</title>
+        <title>CubeStats</title>
       </Head>
       <Component {...pageProps} />
     </>

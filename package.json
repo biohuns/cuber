@@ -1,5 +1,5 @@
 {
-  "name": "cuber",
+  "name": "cubestats",
   "private": true,
   "scripts": {
     "dev": "next dev",
