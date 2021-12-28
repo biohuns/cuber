@@ -1,18 +1,33 @@
 import { useCallback } from "react";
+import useScrambler from "../hooks/scrambler";
 import useStopwatch from "../hooks/stopwatch";
 import Button from "./Button";
 import Card from "./Card";
+import Cube from "./Cube";
 
 type Props = {};
 
 export default function StopwatchCard({}: Props) {
   const { isRunning, ms, start, pause, reset } = useStopwatch({});
   const durationFormat = useDurationFormat();
-  const formatted = durationFormat(ms);
+  const { scramble, refresh } = useScrambler();
+
+  const onReset = () => {
+    refresh();
+    reset();
+  };
 
   return (
     <Card title="Stopwatch">
-      <div className="time">{formatted}</div>
+      {scramble ? (
+        <>
+          <div className="scramble">{scramble}</div>
+          <div className="cube">
+            <Cube width={150} height={150} algorithm={scramble} />
+          </div>
+        </>
+      ) : null}
+      <div className="time">{durationFormat(ms)}</div>
       <div className="buttons">
         <Button onClick={start} disabled={isRunning} color="green">
           Start
@@ -20,7 +35,7 @@ export default function StopwatchCard({}: Props) {
         <Button onClick={pause} disabled={!isRunning} color="orange">
           Pause
         </Button>
-        <Button onClick={reset} disabled={!isRunning && ms === 0} color="red">
+        <Button onClick={onReset} disabled={!isRunning && ms === 0} color="red">
           Reset
         </Button>
       </div>
