@@ -1,9 +1,10 @@
+import Container from "../components/Container";
 import StopwatchCard from "../components/StopwatchCard";
 
 export default function Home() {
   return (
-    <main>
+    <Container>
       <StopwatchCard />
-    </main>
+    </Container>
   );
 }

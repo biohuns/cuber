@@ -23,6 +23,7 @@ export default function Card({ title, children }: Props) {
           font-size: 1.4rem;
           font-weight: bold;
           margin-bottom: 8px;
+          text-align: center;
         }
       `}</style>
     </div>

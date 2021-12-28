@@ -28,11 +28,11 @@ export default function StopwatchCard({}: Props) {
         .time {
           font-size: 3rem;
           margin-bottom: 8px;
-          text-align: right;
+          text-align: center;
         }
         .buttons {
           display: flex;
-          justify-content: space-between;
+          justify-content: center;
         }
       `}</style>
     </Card>
