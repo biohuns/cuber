@@ -1,46 +1,56 @@
-import { useState } from "react";
+import { useReducer } from "react";
 import useInterval from "./interval";
 
-const intervalMsDefault = 10;
-const limitSecDefault = 3600;
+const intervalMilliSeconds = 10;
+const limitSeconds = 3600;
 
-type Props = {
-  intervalMs?: number;
-  limitSec?: number;
+type State = {
+  isRunning: boolean;
+  start: number;
+  count: number;
 };
 
-export default function useStopwatch({
-  intervalMs = intervalMsDefault,
-  limitSec = limitSecDefault,
-}: Props) {
-  const [isRunning, setIsRunning] = useState(false);
-  const [startMs, setStartMs] = useState(NaN);
-  const [ms, setMs] = useState(0);
+type Action = {
+  type: "COUNT" | "START" | "PAUSE" | "RESET";
+};
 
-  const start = () => {
-    setStartMs(getNowMs() - ms);
-    setIsRunning(true);
-  };
+const initialState: State = {
+  isRunning: false,
+  start: 0,
+  count: 0,
+};
 
-  const pause = () => {
-    setIsRunning(false);
-  };
+const reducer = (state: State, action: Action): State => {
+  switch (action.type) {
+    case "COUNT":
+      if (!state.isRunning) return state;
+      if (Number.isNaN(state.start)) return { ...state, count: 0 };
+      const count = getNowMs() - state.start;
+      if (limitSeconds * 1000 < count)
+        return { isRunning: false, start: NaN, count: 0 };
+      return { ...state, count };
+    case "START":
+      return { ...state, isRunning: true, start: getNowMs() - state.count };
+    case "PAUSE":
+      return { ...state, isRunning: false };
+    case "RESET":
+      return { isRunning: false, start: NaN, count: 0 };
+  }
+};
 
-  const reset = () => {
-    setIsRunning(false);
-    setStartMs(NaN);
-    setMs(0);
-  };
+export default function useStopwatch() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const start = () => dispatch({ type: "START" });
+  const pause = () => dispatch({ type: "PAUSE" });
+  const reset = () => dispatch({ type: "RESET" });
 
   useInterval(
-    () => {
-      setMs(Number.isNaN(startMs) ? 0 : getNowMs() - startMs);
-      if (limitSec !== undefined && limitSec * 1000 < ms) reset();
-    },
-    isRunning ? intervalMs : undefined
+    () => dispatch({ type: "COUNT" }),
+    state.isRunning ? intervalMilliSeconds : undefined
   );
 
-  return { isRunning, ms, start, pause, reset };
+  return { state, start, pause, reset };
 }
 
 function getNowMs() {

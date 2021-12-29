@@ -8,7 +8,7 @@ export default function useInterval(callback: () => void, ms?: number) {
   }, [callback]);
 
   useEffect(() => {
-    if (ms === undefined) return;
+    if (!ms) return () => {};
 
     const interval = setInterval(() => {
       if (!onIntervalRef.current) return;

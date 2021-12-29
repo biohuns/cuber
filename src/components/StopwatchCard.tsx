@@ -10,7 +10,7 @@ type Props = {};
 
 export default function StopwatchCard({}: Props) {
   const rotateCubeRef = useRef<{ reset: () => void }>();
-  const { isRunning, ms, start, pause, reset } = useStopwatch({});
+  const { state, start, pause, reset } = useStopwatch();
   const durationFormat = useDurationFormat();
   const { scramble, refresh } = useScrambler();
 
@@ -26,9 +26,9 @@ export default function StopwatchCard({}: Props) {
         <RotateCube algorithm={scramble} ref={rotateCubeRef} />
       </div>
       <div className="scramble">{scramble}</div>
-      <div className="time">{durationFormat(ms)}</div>
+      <div className="time">{durationFormat(state.count)}</div>
       <div className="buttons">
-        {!isRunning ? (
+        {!state.isRunning ? (
           <Button onClick={start} color="green">
             <HiPlay size={20} />
             <span className="button-text">Start</span>
@@ -39,7 +39,11 @@ export default function StopwatchCard({}: Props) {
             <span className="button-text">Pause</span>
           </Button>
         )}
-        <Button onClick={onReset} disabled={!isRunning && ms === 0} color="red">
+        <Button
+          onClick={onReset}
+          disabled={!state.isRunning && state.count === 0}
+          color="red"
+        >
           <HiStop size={20} />
 
           <span className="button-text">Reset</span>
