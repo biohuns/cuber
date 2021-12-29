@@ -18,7 +18,7 @@ body {
 
 body {
   height: 100vh;
-  padding: 16px;
+  background: url("/img/background.png");
 }
 
 /* Avoid Chrome to see Safari hack */
@@ -27,10 +27,6 @@ body {
     /* The hack for Safari */
     height: -webkit-fill-available;
   }
-}
-
-body {
-  background: no-repeat center / cover url("/img/background.jpg");
 }
 
 a {

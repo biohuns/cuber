@@ -15,8 +15,8 @@ export default function StopwatchCard({}: Props) {
   const { scramble, refresh } = useScrambler();
 
   const onReset = () => {
-    refresh();
     reset();
+    refresh();
     rotateCubeRef.current?.reset();
   };
 

@@ -15,6 +15,7 @@ export default function Container({ children }: Props) {
           max-width: 425px;
           min-width: 288px;
           margin: 0 auto;
+          padding: 16px;
         }
       `}</style>
     </main>
