@@ -53,6 +53,7 @@ export default function StopwatchCard({}: Props) {
         }
         .time {
           font-size: 3rem;
+          font-family: "Roboto Mono", monospace;
           margin-bottom: 8px;
           text-align: center;
         }
