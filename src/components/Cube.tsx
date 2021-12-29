@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef } from "react";
-import { cubeSVG, ICubeOptions } from "sr-visualizer";
+import { cubeSVG, Face, ICubeOptions } from "sr-visualizer";
 
 type Props = {} | ICubeOptions;
 
@@ -18,10 +18,28 @@ export default function Cube(props: Props) {
     cubeSVG(cubeRef.current, {
       width,
       height,
+      // Rubik's Cube colors palette
+      // @see https://colorswall.com/palette/171
+      colorScheme: {
+        [Face.U]: "#ffd500",
+        [Face.R]: "#b71234",
+        [Face.F]: "#0046ad",
+        [Face.D]: "#ffffff",
+        [Face.L]: "#ff5800",
+        [Face.B]: "#009b48",
+      },
       ...props,
     });
     return clearCube;
   }, [props, clearCube]);
 
-  return <div ref={cubeRef}></div>;
+  return (
+    <div ref={cubeRef} className="root">
+      <style jsx>{`
+        .root {
+          width: 100%;
+        }
+      `}</style>
+    </div>
+  );
 }

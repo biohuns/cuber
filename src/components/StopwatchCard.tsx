@@ -19,12 +19,16 @@ export default function StopwatchCard({}: Props) {
 
   return (
     <Card title="Stopwatch">
+      <div className="cube">
+        <Cube
+          height={150}
+          algorithm={scramble}
+          stickerOpacity={scramble ? 100 : 0}
+        />
+      </div>
       {scramble ? (
         <>
           <div className="scramble">{scramble}</div>
-          <div className="cube">
-            <Cube width={150} height={150} algorithm={scramble} />
-          </div>
         </>
       ) : null}
       <div className="time">{durationFormat(ms)}</div>
@@ -40,6 +44,14 @@ export default function StopwatchCard({}: Props) {
         </Button>
       </div>
       <style jsx>{`
+        .cube {
+          margin-bottom: 8px;
+        }
+        .scramble {
+          font-size: 1.2rem;
+          text-align: center;
+          margin-bottom: 16px;
+        }
         .time {
           font-size: 3rem;
           margin-bottom: 8px;

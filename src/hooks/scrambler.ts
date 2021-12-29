@@ -13,6 +13,7 @@ export default function useScrambler() {
 
   const refresh = useCallback(async () => {
     if (!initialized) return;
+    setScramble("");
     setScramble(Cube.scramble());
   }, [initialized]);
 
