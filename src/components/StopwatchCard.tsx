@@ -45,7 +45,6 @@ export default function StopwatchCard({}: Props) {
           color="red"
         >
           <HiStop size={20} />
-
           <span className="button-text">Reset</span>
         </Button>
       </div>
@@ -59,8 +58,8 @@ export default function StopwatchCard({}: Props) {
           margin-bottom: 16px;
         }
         .time {
-          font-size: 3rem;
           font-family: "Roboto Mono", monospace;
+          font-size: 2.4rem;
           margin-bottom: 8px;
           text-align: center;
         }
@@ -69,6 +68,7 @@ export default function StopwatchCard({}: Props) {
           justify-content: center;
         }
         .button-text {
+          font-family: "Roboto Mono", monospace;
           margin-left: 2px;
         }
       `}</style>

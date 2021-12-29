@@ -3,7 +3,7 @@ type Props = {};
 export default function Header({}: Props) {
   return (
     <header className="root">
-      <h1>Cube Stats</h1>
+      <h1>CubeStats</h1>
       <style jsx>{`
         .root {
           background-color: #ffffff0f;
@@ -16,9 +16,12 @@ export default function Header({}: Props) {
         }
         .root h1 {
           color: var(--text-color);
+          font-family: "Roboto Mono", monospace;
           font-size: 24px;
-          padding: 8px;
+          font-weight: bold;
+          letter-spacing: 0.2rem;
           text-align: center;
+          padding: 10px;
         }
       `}</style>
     </header>

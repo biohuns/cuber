@@ -19,7 +19,8 @@ export default function Card({ title, children }: Props) {
           backdrop-filter: blur(10px);
           -webkit-backdrop-filter: blur(10px);
         }
-        .header {
+        .root .header {
+          font-family: "Roboto Mono", monospace;
           font-size: 1.4rem;
           font-weight: bold;
           margin-bottom: 16px;
