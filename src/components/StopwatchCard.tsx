@@ -28,14 +28,17 @@ export default function StopwatchCard({}: Props) {
       <div className="scramble">{scramble}</div>
       <div className="time">{durationFormat(ms)}</div>
       <div className="buttons">
-        <Button onClick={start} disabled={isRunning} color="green">
-          <HiPlay size={20} className="button-icon" />
-          <span className="button-text">Start</span>
-        </Button>
-        <Button onClick={pause} disabled={!isRunning} color="orange">
-          <HiPause size={20} />
-          <span className="button-text">Pause</span>
-        </Button>
+        {!isRunning ? (
+          <Button onClick={start} color="green">
+            <HiPlay size={20} />
+            <span className="button-text">Start</span>
+          </Button>
+        ) : (
+          <Button onClick={pause} color="orange">
+            <HiPause size={20} />
+            <span className="button-text">Pause</span>
+          </Button>
+        )}
         <Button onClick={onReset} disabled={!isRunning && ms === 0} color="red">
           <HiStop size={20} />
 
@@ -63,11 +66,6 @@ export default function StopwatchCard({}: Props) {
         }
         .button-text {
           margin-left: 2px;
-        }
-        @media (max-width: 374px) {
-          .button-text {
-            display: none;
-          }
         }
       `}</style>
     </Card>
