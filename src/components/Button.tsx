@@ -52,7 +52,7 @@ export default function Button({
         }
         .green {
           background-color: #00aa1177;
-          border: 1px solid #080e0999;
+          border: 1px solid #00aa1199;
         }
         .green:hover {
           background-color: #00aa11aa;

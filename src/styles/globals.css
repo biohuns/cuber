@@ -1,7 +1,4 @@
 :root {
-  --bg-back-color: #3a3a3a;
-  --bg-front-color: #3c3c3c;
-  --bg-front-color-a77: #3c3c3c77;
   --accent-color: #2a86ff;
   --warn-color: #ec9d36;
   --error-color: #ee3333;
@@ -33,60 +30,7 @@ body {
 }
 
 body {
-  /* background pattern */
-  /* https://www.magicpattern.design/tools/css-backgrounds */
-  background-color: var(--bg-back-color);
-  opacity: 0.8;
-  background-image: linear-gradient(
-      30deg,
-      var(--bg-front-color) 12%,
-      transparent 12.5%,
-      transparent 87%,
-      var(--bg-front-color) 87.5%,
-      var(--bg-front-color)
-    ),
-    linear-gradient(
-      150deg,
-      var(--bg-front-color) 12%,
-      transparent 12.5%,
-      transparent 87%,
-      var(--bg-front-color) 87.5%,
-      var(--bg-front-color)
-    ),
-    linear-gradient(
-      30deg,
-      var(--bg-front-color) 12%,
-      transparent 12.5%,
-      transparent 87%,
-      var(--bg-front-color) 87.5%,
-      var(--bg-front-color)
-    ),
-    linear-gradient(
-      150deg,
-      var(--bg-front-color) 12%,
-      transparent 12.5%,
-      transparent 87%,
-      var(--bg-front-color) 87.5%,
-      var(--bg-front-color)
-    ),
-    linear-gradient(
-      60deg,
-      var(--bg-front-color-a77) 25%,
-      transparent 25.5%,
-      transparent 75%,
-      var(--bg-front-color-a77) 75%,
-      var(--bg-front-color-a77)
-    ),
-    linear-gradient(
-      60deg,
-      var(--bg-front-color-a77) 25%,
-      transparent 25.5%,
-      transparent 75%,
-      var(--bg-front-color-a77) 75%,
-      var(--bg-front-color-a77)
-    );
-  background-size: 80px 140px;
-  background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+  background: no-repeat center / cover url("/img/background.jpg");
 }
 
 a {
