@@ -26,6 +26,9 @@ export default function Button({
           padding: 8px 12px;
           border-radius: 6px;
           font-size: 1rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
         .root:disabled,
         .root:hover:disabled {

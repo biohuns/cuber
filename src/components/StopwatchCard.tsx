@@ -1,4 +1,5 @@
 import { useCallback, useRef } from "react";
+import { HiPause, HiPlay, HiStop } from "react-icons/hi";
 import useScrambler from "../hooks/scrambler";
 import useStopwatch from "../hooks/stopwatch";
 import Button from "./Button";
@@ -28,13 +29,17 @@ export default function StopwatchCard({}: Props) {
       <div className="time">{durationFormat(ms)}</div>
       <div className="buttons">
         <Button onClick={start} disabled={isRunning} color="green">
-          Start
+          <HiPlay size={20} className="button-icon" />
+          <span className="button-text">Start</span>
         </Button>
         <Button onClick={pause} disabled={!isRunning} color="orange">
-          Pause
+          <HiPause size={20} />
+          <span className="button-text">Pause</span>
         </Button>
         <Button onClick={onReset} disabled={!isRunning && ms === 0} color="red">
-          Reset
+          <HiStop size={20} />
+
+          <span className="button-text">Reset</span>
         </Button>
       </div>
       <style jsx>{`
@@ -54,6 +59,14 @@ export default function StopwatchCard({}: Props) {
         .buttons {
           display: flex;
           justify-content: center;
+        }
+        .button-text {
+          margin-left: 2px;
+        }
+        @media (max-width: 374px) {
+          .button-text {
+            display: none;
+          }
         }
       `}</style>
     </Card>
