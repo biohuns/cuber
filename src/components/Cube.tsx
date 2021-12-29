@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useRef } from "react";
 import { cubeSVG, Face, ICubeOptions } from "sr-visualizer";
 
-type Props = {} | ICubeOptions;
+type Props = {
+  onClick?: () => void;
+} & ICubeOptions;
 
-export default function Cube(props: Props) {
+export default function Cube({ onClick, ...props }: Props) {
   const cubeRef = useRef<HTMLDivElement>(null);
 
   const clearCube = useCallback(() => {
@@ -28,16 +30,17 @@ export default function Cube(props: Props) {
         [Face.L]: "#ff5800",
         [Face.B]: "#009b48",
       },
+      stickerOpacity: props.algorithm ? 100 : 0,
       ...props,
     });
     return clearCube;
   }, [props, clearCube]);
 
   return (
-    <div ref={cubeRef} className="root">
+    <div ref={cubeRef} onClick={onClick} className="root">
       <style jsx>{`
         .root {
-          width: 100%;
+          cursor: ${onClick ? "pointer" : "auto"};
         }
       `}</style>
     </div>

@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 type Props = {
-  color?: "red" | "green" | "blue" | "orange";
+  color?: "default" | "red" | "green" | "blue" | "orange" | "none";
   disabled?: boolean;
   onClick?: () => void;
   children?: ReactNode;
@@ -9,7 +9,7 @@ type Props = {
 
 export default function Button({
   disabled,
-  color = "blue",
+  color = "default",
   onClick,
   children,
 }: Props) {
@@ -31,6 +31,14 @@ export default function Button({
         .root:hover:disabled {
           background-color: #33333377;
           border: 1px solid #33333399;
+          color: #575757;
+        }
+        .default {
+          background-color: #ffffff0f;
+          border: 1px solid #ffffff1a;
+        }
+        .default:hover {
+          background-color: #ffffff32;
         }
         .red {
           background-color: #ff000077;
@@ -41,7 +49,7 @@ export default function Button({
         }
         .green {
           background-color: #00aa1177;
-          border: 1px solid #00aa1199;
+          border: 1px solid #080e0999;
         }
         .green:hover {
           background-color: #00aa11aa;
@@ -59,6 +67,13 @@ export default function Button({
         }
         .orange:hover {
           background-color: #ffa500aa;
+        }
+        .none,
+        .none:hover,
+        .none:disabled,
+        .none:hover:disabled {
+          background: none;
+          border: none;
         }
       `}</style>
     </button>
