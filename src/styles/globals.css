@@ -10,8 +10,6 @@
 
 html,
 body {
-  padding: 0;
-  margin: 0;
   font-family: "Roboto", sans-serif;
   height: -webkit-fill-available;
 }
@@ -29,11 +27,9 @@ body {
   }
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
+.glass {
+  background-color: #ffffff0f;
+  border-bottom: 1px solid #ffffff1a;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }

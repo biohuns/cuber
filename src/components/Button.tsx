@@ -1,23 +1,24 @@
-import { ReactNode } from "react";
+import { PropsWithChildren } from "react";
 
 type Props = {
   color?: "default" | "red" | "green" | "blue" | "orange" | "none";
   disabled?: boolean;
+  className?: string;
   onClick?: () => void;
-  children?: ReactNode;
 };
 
 export default function Button({
-  disabled,
   color = "default",
+  disabled,
+  className,
   onClick,
   children,
-}: Props) {
+}: PropsWithChildren<Props>) {
   return (
     <button
       disabled={disabled}
       onClick={onClick}
-      className={["root", color].join(" ")}
+      className={[className, "root", color].join(" ")}
     >
       {children}
       <style jsx>{`

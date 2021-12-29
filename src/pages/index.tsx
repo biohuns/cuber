@@ -5,6 +5,8 @@ export default function Home() {
   return (
     <Container>
       <StopwatchCard />
+      <StopwatchCard />
+      <StopwatchCard />
     </Container>
   );
 }

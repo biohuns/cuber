@@ -1,9 +1,12 @@
 import Head from "next/head";
+import { setAppElement } from "react-modal";
 import "../../node_modules/destyle.css";
 import Header from "../components/Header";
 import "../styles/globals.css";
 
-export default function CustomApp({ Component, pageProps }) {
+setAppElement("#__next");
+
+export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
