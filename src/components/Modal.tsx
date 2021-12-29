@@ -14,29 +14,25 @@ export default function Modal({
       left: 0,
       right: 0,
       bottom: 0,
-      backgroundColor: "rgba(0, 0, 0, 0.4)",
+      backgroundColor: "#00000066",
       zIndex: 10000,
     },
     content: {
       position: "absolute",
-      top: "100px",
-      left: "100px",
-      right: "100px",
-      bottom: "100px",
-      padding: "20px",
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+      padding: "16px",
       overflow: "auto",
-      WebkitOverflowScrolling: "touch",
       color: "var(--text-color)",
-      // Backdrop
-      backgroundColor: "#ffffff0f",
-      border: "1px solid #ffffff1a",
-      borderRadius: "10px",
-      backdropFilter: "blur(10px)",
-      WebkitBackdropFilter: "blur(10px)",
     },
   };
+
   return (
-    <ReactModal style={styles} {...props}>
+    <ReactModal style={styles} className="glass" {...props}>
       {children}
     </ReactModal>
   );

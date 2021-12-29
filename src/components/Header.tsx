@@ -10,7 +10,7 @@ export default function Header({}: Props) {
   const [settingIsOpen, setSettingIsOpen] = useState(false);
 
   return (
-    <header className="root">
+    <header className="root glass-bottom">
       <h1>
         <Link href="/">CubeStats</Link>
       </h1>
@@ -32,10 +32,6 @@ export default function Header({}: Props) {
           top: 0;
           left: 0;
           right: 0;
-          background-color: #ffffff0f;
-          border-bottom: 1px solid #ffffff1a;
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
           display: flex;
           justify-content: space-between;
           z-index: 9999;

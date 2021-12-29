@@ -4,7 +4,7 @@ type Props = { title?: string; children: ReactNode };
 
 export default function Card({ title, children }: Props) {
   return (
-    <div className="root">
+    <div className="root glass">
       {title ? <div className="header">{title}</div> : null}
       {children}
       <style jsx>{`
@@ -12,12 +12,6 @@ export default function Card({ title, children }: Props) {
           padding: 16px;
           color: var(--text-color);
           min-width: 288px;
-
-          background-color: #ffffff0f;
-          border: 1px solid #ffffff1a;
-          border-radius: 10px;
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
         }
         .root .header {
           font-family: "Roboto Mono", monospace;

@@ -29,6 +29,14 @@ body {
 
 .glass {
   background-color: #ffffff0f;
+  border: 1px solid #ffffff1a;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.glass-bottom {
+  background-color: #ffffff0f;
   border-bottom: 1px solid #ffffff1a;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
