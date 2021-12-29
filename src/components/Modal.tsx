@@ -4,6 +4,7 @@ import ReactModal from "react-modal";
 type Props = {} & ReactModal.Props;
 
 export default function Modal({
+  className,
   children,
   ...props
 }: PropsWithChildren<Props>) {
@@ -32,7 +33,11 @@ export default function Modal({
   };
 
   return (
-    <ReactModal style={styles} className="glass" {...props}>
+    <ReactModal
+      style={styles}
+      className={[className, "glass"].join(" ")}
+      {...props}
+    >
       {children}
     </ReactModal>
   );

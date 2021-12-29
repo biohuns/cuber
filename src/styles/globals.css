@@ -6,12 +6,16 @@
   --text-color: #f7f7f7;
   --text-dark-color: #212529;
   --text-disable-color: #575757;
+
+  --font-default: "Roboto", sans-serif;
+  --font-monospace: "Roboto Mono", monospace;
 }
 
 html,
 body {
   font-family: "Roboto", sans-serif;
   height: -webkit-fill-available;
+  overscroll-behavior: none;
 }
 
 body {

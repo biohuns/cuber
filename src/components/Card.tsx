@@ -12,9 +12,10 @@ export default function Card({ title, children }: Props) {
           padding: 16px;
           color: var(--text-color);
           min-width: 288px;
+          position: relative;
         }
         .root .header {
-          font-family: "Roboto Mono", monospace;
+          font-family: var(--font-monospace);
           font-size: 1.4rem;
           font-weight: bold;
           margin-bottom: 16px;
