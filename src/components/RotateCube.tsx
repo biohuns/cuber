@@ -4,7 +4,7 @@ import {
   useImperativeHandle,
   useState,
 } from "react";
-import { FiCornerDownLeft, FiCornerLeftDown } from "react-icons/fi";
+import { FiCornerRightUp, FiCornerUpRight } from "react-icons/fi";
 import { Axis, ICubeOptions } from "sr-visualizer";
 import Button from "./Button";
 import Cube from "./Cube";
@@ -42,8 +42,8 @@ const RotateCube: ForwardRefRenderFunction<{ reset: () => void }, Props> = (
 
   return (
     <div className="root">
-      <Button onClick={onClickLeft} disabled={axisY <= minAxisY} color="none">
-        <FiCornerLeftDown size={30} className="button-icon" />
+      <Button onClick={onClickRight} disabled={maxAxisY <= axisY} color="none">
+        <FiCornerUpRight size={30} className="button-icon" />
       </Button>
       <Cube
         onClick={onToggleAxisX}
@@ -55,8 +55,8 @@ const RotateCube: ForwardRefRenderFunction<{ reset: () => void }, Props> = (
         height={150}
         {...props}
       />
-      <Button onClick={onClickRight} disabled={maxAxisY <= axisY} color="none">
-        <FiCornerDownLeft size={30} className="button-icon" />
+      <Button onClick={onClickLeft} disabled={axisY <= minAxisY} color="none">
+        <FiCornerRightUp size={30} className="button-icon" />
       </Button>
       <style jsx>{`
         .root {
