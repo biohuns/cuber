@@ -18,6 +18,12 @@ export default function Document() {
 
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" />
+
+        <meta name="theme-color" content="#363636" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
       </Head>
       <body>
         <Main></Main>
