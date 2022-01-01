@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc"
   },
   "dependencies": {
     "@svgr/webpack": "^6.1.2",
