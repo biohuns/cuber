@@ -8,12 +8,9 @@ export default function SettingModal(props: Props) {
     <Modal {...props}>
       <div className="root">
         <h2>Settings</h2>
+        <h3>Face Pattern</h3>
         <style jsx>{`
           .root {
-          }
-          .root h2 {
-            font-size: 1.2rem;
-            font-weight: bold;
           }
         `}</style>
       </div>

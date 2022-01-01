@@ -1,7 +1,7 @@
 :root {
-  --accent-color: #2a86ff;
-  --warn-color: #ec9d36;
-  --error-color: #ee3333;
+  --accent-color: #005eff;
+  --warn-color: #ffa500;
+  --error-color: #005eff;
   --divine-border: #575757 1px solid;
   --text-color: #f7f7f7;
   --text-dark-color: #212529;
@@ -15,12 +15,12 @@ html,
 body {
   font-family: "Roboto", sans-serif;
   height: -webkit-fill-available;
-  overscroll-behavior: none;
 }
 
 body {
   height: 100vh;
   background: url("/img/background.png");
+  overscroll-behavior: none;
 }
 
 /* Avoid Chrome to see Safari hack */
@@ -29,6 +29,17 @@ body {
     /* The hack for Safari */
     height: -webkit-fill-available;
   }
+}
+
+h2 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+h3 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 8px;
 }
 
 .glass {

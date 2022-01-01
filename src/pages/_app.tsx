@@ -7,6 +7,8 @@ import "../styles/globals.css";
 setAppElement("#__next");
 
 export default function App({ Component, pageProps }) {
+  useDisableBounceScroll();
+
   return (
     <>
       <Head>
@@ -15,5 +17,16 @@ export default function App({ Component, pageProps }) {
       <Header />
       <Component {...pageProps} />
     </>
+  );
+}
+
+function useDisableBounceScroll() {
+  if (!process.browser) return;
+  document.addEventListener(
+    "touchmove",
+    (event) => {
+      event.preventDefault();
+    },
+    { passive: false }
   );
 }

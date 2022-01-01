@@ -29,6 +29,7 @@ export default function Modal({
       padding: "16px",
       overflow: "auto",
       color: "var(--text-color)",
+      outline: "none",
     },
   };
 
