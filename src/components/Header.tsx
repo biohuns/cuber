@@ -24,7 +24,7 @@ export default function Header({}: Props) {
           font-size: 24px;
           font-weight: bold;
           letter-spacing: 0.2rem;
-          padding: 7px 7px 6px;
+          padding: 7px;
           margin-left: 10px;
         }
       `}</style>
