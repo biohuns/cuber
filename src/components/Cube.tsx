@@ -1,5 +1,7 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useContext, useEffect, useRef } from "react";
 import { cubeSVG, Face, ICubeOptions } from "sr-visualizer";
+import { colorSchemes } from "../entity/cube";
+import { settingsContext } from "../hooks/settings";
 
 type Props = {
   onClick?: () => void;
@@ -7,6 +9,7 @@ type Props = {
 
 export default function Cube({ onClick, ...props }: Props) {
   const cubeRef = useRef<HTMLDivElement>(null);
+  const { settings } = useContext(settingsContext);
 
   const clearCube = useCallback(() => {
     if (!cubeRef.current || !cubeRef.current.children) return;
@@ -17,24 +20,25 @@ export default function Cube({ onClick, ...props }: Props) {
 
   useEffect(() => {
     const { width, height } = cubeRef.current.getBoundingClientRect();
+    const scheme = colorSchemes[settings.facePattern];
     cubeSVG(cubeRef.current, {
       width,
       height,
       // Rubik's Cube colors palette
       // @see https://colorswall.com/palette/171
       colorScheme: {
-        [Face.U]: "#ffd500",
-        [Face.R]: "#b71234",
-        [Face.F]: "#0046ad",
-        [Face.D]: "#ffffff",
-        [Face.L]: "#ff5800",
-        [Face.B]: "#009b48",
+        [Face.U]: scheme.U,
+        [Face.R]: scheme.R,
+        [Face.F]: scheme.F,
+        [Face.D]: scheme.D,
+        [Face.L]: scheme.L,
+        [Face.B]: scheme.B,
       },
       stickerOpacity: props.algorithm ? 100 : 0,
       ...props,
     });
     return clearCube;
-  }, [props, clearCube]);
+  }, [settings.facePattern, props, clearCube]);
 
   return (
     <div ref={cubeRef} onClick={onClick} className="root">

@@ -2,11 +2,13 @@ import Head from "next/head";
 import { setAppElement } from "react-modal";
 import "../../node_modules/destyle.css";
 import Header from "../components/Header";
+import { settingsContext, useSettings } from "../hooks/settings";
 import "../styles/globals.css";
 
 setAppElement("#__next");
 
 export default function App({ Component, pageProps }) {
+  const settingsContextValue = useSettings();
   useDisableBounceScroll();
 
   return (
@@ -14,8 +16,10 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>CubeStats</title>
       </Head>
-      <Header />
-      <Component {...pageProps} />
+      <settingsContext.Provider value={settingsContextValue}>
+        <Header />
+        <Component {...pageProps} />
+      </settingsContext.Provider>
     </>
   );
 }

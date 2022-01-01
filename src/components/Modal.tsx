@@ -24,7 +24,7 @@ export default function Modal({
       left: "50%",
       right: "auto",
       bottom: "auto",
-      marginRight: "-50%",
+      marginRight: "-25%",
       transform: "translate(-50%, -50%)",
       padding: "16px",
       overflow: "auto",
