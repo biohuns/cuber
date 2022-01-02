@@ -20,7 +20,7 @@ export default function RadioInput({
   return (
     <>
       {items.map((item) => (
-        <label key={item.value}>
+        <label key={item.value} className="label">
           <input
             type="radio"
             name={name}
@@ -28,64 +28,63 @@ export default function RadioInput({
             defaultChecked={item.value === defaultValue}
             onChange={() => onChange(item.value)}
           />
-          <span>{item.label}</span>
-          {item.preview ? <div>{item.preview}</div> : null}
+          <span className="radio" />
+          <span className="label">{item.label}</span>
+          {item.preview ? <div className="preview">{item.preview}</div> : null}
         </label>
       ))}
       <style jsx>{`
-        label {
+        /* @see https://codepen.io/triss90/pen/XNEdRe */
+        .label {
           display: flex;
-          justify-content: space-between;
+          justify-content: flex-start;
           align-items: center;
+          column-gap: 16px;
+          cursor: pointer;
+
+          --gray-color: #f4f4f4;
+          --dark-gray-color: #b4b4b4;
         }
         input {
-          display: none;
           position: absolute;
-          width: 1px;
-          height: 1px;
-        }
-        span {
-          display: inline-block;
-          position: relative;
-          cursor: pointer;
-          padding: 10px 11px 8px 36px;
-          border-radius: 4px;
-          vertical-align: middle;
-        }
-        span::before,
-        span::after {
-          display: block;
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          margin: auto 10px auto 0;
-          border-radius: 50%;
-          content: "";
-        }
-        span::before {
-          width: 20px;
-          height: 20px;
-          background: var(--text-color);
-          border: 2px solid #999999;
-          left: 9px;
-        }
-        span::after {
-          width: 10px;
-          height: 10px;
-          background: #999999;
-          left: 14px;
           opacity: 0;
         }
-        input:checked + span::before {
-          border: 2px solid var(--accent-color);
+        .radio {
+          flex: 0 0 21px;
+          width: 21px;
+          height: 21px;
+
+          background: var(--gray-color);
+          border: 1px solid var(--dark-gray-color);
+          border-radius: 100%;
+
+          transition: all 250ms ease;
         }
-        input:checked + span::after {
-          background: var(--accent-color);
-          opacity: 1;
+        input:checked + .radio {
+          background-color: var(--accent-color);
+          box-shadow: inset 0 0 0 4px var(--gray-color);
         }
-        div {
-          display: inline-block;
-          cursor: pointer;
+        input:focus + .radio {
+          outline: none;
+          border-color: var(--accent-color);
+        }
+        input:disabled + .radio {
+          box-shadow: inset 0 0 0 4px var(--gray-color);
+          border-color: var(--dark-gray-color);
+          background: var(--dark-gray-color);
+        }
+        .label {
+          flex: 1 1;
+          margin-top: 2px;
+        }
+        .preview {
+          flex: 0 0;
+          border: 1px solid transparent;
+          border-radius: 10px;
+          transition: all 250ms ease;
+        }
+        input:checked + * + * + .preview {
+          border-color: var(--accent-color);
         }
       `}</style>
     </>

@@ -49,7 +49,8 @@ export default function SettingModal(props: Props) {
           }}
         />
         <style jsx>{`
-          .root {
+          .root h2 {
+            text-align: center;
           }
         `}</style>
       </div>
