@@ -36,7 +36,7 @@ export default function Modal({
   return (
     <ReactModal
       style={styles}
-      className={[className, "glass"].join(" ")}
+      className={[className, "glass"].filter(Boolean).join(" ")}
       {...props}
     >
       {children}

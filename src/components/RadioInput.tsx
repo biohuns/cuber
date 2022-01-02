@@ -35,7 +35,9 @@ export default function RadioInput({
               className={[
                 "preview",
                 item.value === defaultValue ? "glass" : null,
-              ].join(" ")}
+              ]
+                .filter(Boolean)
+                .join(" ")}
             >
               {item.preview}
             </div>

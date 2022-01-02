@@ -18,7 +18,7 @@ export default function Button({
     <button
       disabled={disabled}
       onClick={onClick}
-      className={[className, "root", color].join(" ")}
+      className={[className, "root", color].filter(Boolean).join(" ")}
     >
       {children}
       <style jsx>{`
