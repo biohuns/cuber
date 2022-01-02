@@ -24,6 +24,14 @@ export const colorSchemes = {
     L: "#ee8734",
     B: "#418837",
   },
+  giiker: {
+    U: "#fdf736",
+    R: "#ffc4d4",
+    F: "#3a9cf7",
+    D: "#faf9ff",
+    L: "#fc6030",
+    B: "#98ffe9",
+  },
 } as const;
 
 export type FacePattern = keyof typeof colorSchemes;

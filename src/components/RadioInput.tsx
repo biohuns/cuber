@@ -85,6 +85,7 @@ export default function RadioInput({
         }
         div {
           display: inline-block;
+          cursor: pointer;
         }
       `}</style>
     </>

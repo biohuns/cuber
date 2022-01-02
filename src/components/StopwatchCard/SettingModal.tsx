@@ -4,6 +4,7 @@ import { FacePattern } from "../../entity/cube";
 import { settingsContext } from "../../hooks/settings";
 import Modal from "../Modal";
 import RadioInput from "../RadioInput";
+import GiikerPatternImg from "./giiker.svg";
 import GlobalPatternImg from "./global.svg";
 import OldJapanPatternImg from "./old-japan.svg";
 
@@ -23,6 +24,11 @@ const facePatternChoices: Array<{
     label: "Previous Japanese Pattern",
     value: "old-japan",
     preview: <OldJapanPatternImg />,
+  },
+  {
+    label: "GiiKER Cube Pattern",
+    value: "giiker",
+    preview: <GiikerPatternImg />,
   },
 ];
 
