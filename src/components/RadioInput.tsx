@@ -30,7 +30,16 @@ export default function RadioInput({
           />
           <span className="radio" />
           <span className="label">{item.label}</span>
-          {item.preview ? <div className="preview">{item.preview}</div> : null}
+          {item.preview ? (
+            <div
+              className={[
+                "preview",
+                item.value === defaultValue ? "glass" : null,
+              ].join(" ")}
+            >
+              {item.preview}
+            </div>
+          ) : null}
         </label>
       ))}
       <style jsx>{`
@@ -57,7 +66,6 @@ export default function RadioInput({
           background: var(--gray-color);
           border: 1px solid var(--dark-gray-color);
           border-radius: 100%;
-
           transition: all 250ms ease;
         }
         input:checked + .radio {
@@ -80,11 +88,6 @@ export default function RadioInput({
         .preview {
           flex: 0 0;
           border: 1px solid transparent;
-          border-radius: 10px;
-          transition: all 250ms ease;
-        }
-        input:checked + * + * + .preview {
-          border-color: var(--accent-color);
         }
       `}</style>
     </>
