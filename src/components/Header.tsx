@@ -5,9 +5,11 @@ type Props = {};
 export default function Header({}: Props) {
   return (
     <header className="root glass-bottom">
+      <div className="left" />
       <h1>
         <Link href="/">CubeStats</Link>
       </h1>
+      <div className="right" />
       <style jsx>{`
         .root {
           position: sticky;
@@ -21,11 +23,10 @@ export default function Header({}: Props) {
         .root h1 {
           color: var(--text-color);
           font-family: var(--font-monospace);
-          font-size: 24px;
-          font-weight: bold;
-          letter-spacing: 0.2rem;
+          font-size: 1rem;
+          font-weight: normal;
+          letter-spacing: 0.1rem;
           padding: 7px;
-          margin-left: 10px;
         }
       `}</style>
     </header>

@@ -19,7 +19,8 @@ body {
 
 body {
   height: 100vh;
-  background: url("/img/background.png");
+  /* background: url("/img/background.png"); */
+  background-color: #202527;
   overscroll-behavior: none;
 }
 
@@ -43,16 +44,16 @@ h3 {
 }
 
 .glass {
-  background-color: #ffffff0f;
-  border: 1px solid #ffffff1a;
+  background-color: #3165760f;
+  border: 1px solid #3165761a;
   border-radius: 10px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 
 .glass-bottom {
-  background-color: #ffffff0f;
-  border-bottom: 1px solid #ffffff1a;
+  background-color: #3165760f;
+  border-bottom: 1px solid #3165761a;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
