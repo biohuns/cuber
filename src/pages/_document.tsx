@@ -14,6 +14,7 @@ export default function Document() {
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
         />
+        <meta name="application-name" content={appName} />
         {/* <meta name='description' content='Best PWA App in the world' /> */}
 
         {/* Icon */}
@@ -26,11 +27,12 @@ export default function Document() {
         <link rel="icon" href="/favicon.ico" />
 
         {/* PWA */}
-        <meta name="application-name" content={appName} />
-        <meta name="mobile-web-app-capable" content="yes" />
         <link rel="manifest" href="/manifest.webmanifest" />
 
-        {/* PWA for Apple Devices */}
+        {/* PWA for Chrome */}
+        <meta name="mobile-web-app-capable" content="yes" />
+
+        {/* PWA for Safari */}
         <meta name="theme-color" content={themeColor} />
         <meta name="apple-mobile-web-app-title" content={appName} />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -38,56 +40,7 @@ export default function Document() {
           name="apple-mobile-web-app-status-bar-style"
           content="black-translucent"
         />
-        <link
-          href="/splash/iphone5_splash.png"
-          media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
-          rel="apple-touch-startup-image"
-        />
-        <link
-          href="/splash/iphone6_splash.png"
-          media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
-          rel="apple-touch-startup-image"
-        />
-        <link
-          href="/splash/iphoneplus_splash.png"
-          media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)"
-          rel="apple-touch-startup-image"
-        />
-        <link
-          href="/splash/iphonex_splash.png"
-          media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
-          rel="apple-touch-startup-image"
-        />
-        <link
-          href="/splash/iphonexr_splash.png"
-          media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)"
-          rel="apple-touch-startup-image"
-        />
-        <link
-          href="/splash/iphonexsmax_splash.png"
-          media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)"
-          rel="apple-touch-startup-image"
-        />
-        <link
-          href="/splash/ipad_splash.png"
-          media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)"
-          rel="apple-touch-startup-image"
-        />
-        <link
-          href="/splash/ipadpro1_splash.png"
-          media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)"
-          rel="apple-touch-startup-image"
-        />
-        <link
-          href="/splash/ipadpro3_splash.png"
-          media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)"
-          rel="apple-touch-startup-image"
-        />
-        <link
-          href="/splash/ipadpro2_splash.png"
-          media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
-          rel="apple-touch-startup-image"
-        />
+        <link href="/splash.png" rel="apple-touch-startup-image" />
 
         {/* PWA for Windows */}
         {/* <meta name='msapplication-config' content='/icons/browserconfig.xml' /> */}
