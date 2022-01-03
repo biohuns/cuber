@@ -14,6 +14,7 @@ export default function Document() {
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
         />
+        {/* <meta name='description' content='Best PWA App in the world' /> */}
 
         {/* Icon */}
         <link
@@ -25,21 +26,73 @@ export default function Document() {
         <link rel="icon" href="/favicon.ico" />
 
         {/* PWA */}
-        <meta name="theme-color" content={themeColor} />
         <meta name="application-name" content={appName} />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <link rel="manifest" href="/manifest.webmanifest" />
+
+        {/* PWA for Apple Devices */}
+        <meta name="theme-color" content={themeColor} />
+        <meta name="apple-mobile-web-app-title" content={appName} />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta
           name="apple-mobile-web-app-status-bar-style"
           content="black-translucent"
         />
-        <meta name="apple-mobile-web-app-title" content={appName} />
-        {/* <meta name='description' content='Best PWA App in the world' /> */}
-        <meta name="mobile-web-app-capable" content="yes" />
-        {/* <meta name='msapplication-config' content='/icons/browserconfig.xml' /> */}
-        <meta name="msapplication-TileColor" content={themeColor} />
-        <meta name="msapplication-tap-highlight" content="no" />
+        <link
+          href="/splash/iphone5_splash.png"
+          media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+          rel="apple-touch-startup-image"
+        />
+        <link
+          href="/splash/iphone6_splash.png"
+          media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+          rel="apple-touch-startup-image"
+        />
+        <link
+          href="/splash/iphoneplus_splash.png"
+          media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)"
+          rel="apple-touch-startup-image"
+        />
+        <link
+          href="/splash/iphonex_splash.png"
+          media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
+          rel="apple-touch-startup-image"
+        />
+        <link
+          href="/splash/iphonexr_splash.png"
+          media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)"
+          rel="apple-touch-startup-image"
+        />
+        <link
+          href="/splash/iphonexsmax_splash.png"
+          media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)"
+          rel="apple-touch-startup-image"
+        />
+        <link
+          href="/splash/ipad_splash.png"
+          media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)"
+          rel="apple-touch-startup-image"
+        />
+        <link
+          href="/splash/ipadpro1_splash.png"
+          media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)"
+          rel="apple-touch-startup-image"
+        />
+        <link
+          href="/splash/ipadpro3_splash.png"
+          media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)"
+          rel="apple-touch-startup-image"
+        />
+        <link
+          href="/splash/ipadpro2_splash.png"
+          media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
+          rel="apple-touch-startup-image"
+        />
 
-        <link rel="manifest" href="/manifest.webmanifest" />
+        {/* PWA for Windows */}
+        {/* <meta name='msapplication-config' content='/icons/browserconfig.xml' /> */}
+        {/* <meta name="msapplication-TileColor" content={themeColor} /> */}
+        {/* <meta name="msapplication-tap-highlight" content="no" /> */}
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary" />
@@ -62,17 +115,6 @@ export default function Document() {
           property="og:image"
           content={`${rootUrl}/icons/apple-touch-icon.png`}
         />
-
-        {/* <!-- apple splash screen images -->
-        <!--
-        <link rel='apple-touch-startup-image' href='/images/apple_splash_2048.png' sizes='2048x2732' />
-        <link rel='apple-touch-startup-image' href='/images/apple_splash_1668.png' sizes='1668x2224' />
-        <link rel='apple-touch-startup-image' href='/images/apple_splash_1536.png' sizes='1536x2048' />
-        <link rel='apple-touch-startup-image' href='/images/apple_splash_1125.png' sizes='1125x2436' />
-        <link rel='apple-touch-startup-image' href='/images/apple_splash_1242.png' sizes='1242x2208' />
-        <link rel='apple-touch-startup-image' href='/images/apple_splash_750.png' sizes='750x1334' />
-        <link rel='apple-touch-startup-image' href='/images/apple_splash_640.png' sizes='640x1136' />
-        --> */}
 
         {/* Font */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
