@@ -1,5 +1,6 @@
 import { Head, Html, Main, NextScript } from "next/document";
 
+const rootUrl = process.env.NEXT_PUBLIC_ROOT_URL;
 const appName = "CubeStats";
 const themeColor = "#202527";
 
@@ -7,6 +8,16 @@ export default function Document() {
   return (
     <Html>
       <Head>
+        {/* Icon */}
+        <link
+          rel="apple-touch-icon"
+          type="image/png"
+          href="/icons/apple-touch-icon.png"
+        />
+        <link rel="icon" type="image/png" href="/icons/icon-192x192.png" />
+        <link rel="icon" href="/favicon.ico" />
+
+        {/* PWA */}
         <meta name="theme-color" content={themeColor} />
         <meta name="application-name" content={appName} />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -22,29 +33,29 @@ export default function Document() {
         <meta name="msapplication-TileColor" content={themeColor} />
         <meta name="msapplication-tap-highlight" content="no" />
 
-        {/* <link rel='apple-touch-icon' href='/icons/touch-icon-iphone.png' />
-        <link rel='apple-touch-icon' sizes='152x152' href='/icons/touch-icon-ipad.png' />
-        <link rel='apple-touch-icon' sizes='180x180' href='/icons/touch-icon-iphone-retina.png' />
-        <link rel='apple-touch-icon' sizes='167x167' href='/icons/touch-icon-ipad-retina.png' /> */}
-
-        {/* <link rel='icon' type='image/png' sizes='32x32' href='/icons/favicon-32x32.png' /> */}
-        {/* <link rel='icon' type='image/png' sizes='16x16' href='/icons/favicon-16x16.png' /> */}
         <link rel="manifest" href="/manifest.webmanifest" />
-        {/* <link rel='mask-icon' href='/icons/safari-pinned-tab.svg' color='#5bbad5' /> */}
-        {/* <link rel='shortcut icon' href='/favicon.ico' /> */}
 
-        {/* <meta name='twitter:card' content='summary' />
-        <meta name='twitter:url' content='https://yourdomain.com' />
-        <meta name='twitter:title' content='PWA App' />
-        <meta name='twitter:description' content='Best PWA App in the world' />
-        <meta name='twitter:image' content='https://yourdomain.com/icons/android-chrome-192x192.png' />
-        <meta name='twitter:creator' content='@DavidWShadow' /> */}
-        {/* <meta property='og:type' content='website' />
-        <meta property='og:title' content='PWA App' />
-        <meta property='og:description' content='Best PWA App in the world' />
-        <meta property='og:site_name' content='PWA App' />
-        <meta property='og:url' content='https://yourdomain.com' />
-        <meta property='og:image' content='https://yourdomain.com/icons/apple-touch-icon.png' /> */}
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:url" content={rootUrl} />
+        <meta name="twitter:title" content="CubeStats" />
+        <meta name="twitter:description" content="Best PWA App in the world" />
+        <meta
+          name="twitter:image"
+          content={`${rootUrl}/icons/android-chrome-192x192.png`}
+        />
+        <meta name="twitter:creator" content="@biohuns" />
+
+        {/* OG */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="CubeStats" />
+        <meta property="og:description" content="Best PWA App in the world" />
+        <meta property="og:site_name" content="CubeStats" />
+        <meta property="og:url" content={rootUrl} />
+        <meta
+          property="og:image"
+          content={`${rootUrl}/icons/apple-touch-icon.png`}
+        />
 
         {/* <!-- apple splash screen images -->
         <!--
@@ -68,9 +79,6 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;700&display=swap"
           rel="stylesheet"
         />
-
-        {/* Favicon */}
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <body>
         <Main></Main>
