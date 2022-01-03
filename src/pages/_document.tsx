@@ -8,6 +8,13 @@ export default function Document() {
   return (
     <Html>
       <Head>
+        <meta charSet="utf-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
+        />
+
         {/* Icon */}
         <link
           rel="apple-touch-icon"
@@ -27,7 +34,6 @@ export default function Document() {
         />
         <meta name="apple-mobile-web-app-title" content={appName} />
         {/* <meta name='description' content='Best PWA App in the world' /> */}
-        {/* <meta name='format-detection' content='telephone=no' /> */}
         <meta name="mobile-web-app-capable" content="yes" />
         {/* <meta name='msapplication-config' content='/icons/browserconfig.xml' /> */}
         <meta name="msapplication-TileColor" content={themeColor} />
