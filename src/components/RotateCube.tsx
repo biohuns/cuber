@@ -1,8 +1,10 @@
 import {
   forwardRef,
   ForwardRefRenderFunction,
+  useCallback,
   useContext,
   useImperativeHandle,
+  useMemo,
   useState,
 } from "react";
 import { FiCornerRightUp, FiCornerUpRight } from "react-icons/fi";
@@ -11,10 +13,13 @@ import { settingsContext } from "../hooks/settings";
 import Button from "./Button";
 import Cube from "./Cube";
 
-const defaultAxisX = -35;
-const defaultAxisY = 45;
-const maxAxisY = 135;
-const minAxisY = -45;
+const cubeLength = 150;
+
+const axisXList = [-35, 45] as const;
+const defaultAxisXIndex = 0;
+
+const axisYList = [-45, 45, 135] as const;
+const defaultAxisYIndex = 1;
 
 type Props = {} & ICubeOptions;
 
@@ -22,55 +27,64 @@ const RotateCube: ForwardRefRenderFunction<{ reset: () => void }, Props> = (
   props,
   ref
 ) => {
-  const { settings } = useContext(settingsContext);
-  const [axisX, setAxisX] = useState(defaultAxisX);
-  const [axisY, setAxisY] = useState(defaultAxisY);
+  const { rotationHorizontal, rotationVertical } =
+    useContext(settingsContext).settings;
+
+  const [axisXIndex, setAxisXIndex] = useState(defaultAxisXIndex);
+  const [axisYIndex, setAxisYIndex] = useState(defaultAxisYIndex);
 
   useImperativeHandle(ref, () => ({
     reset() {
-      setAxisX(defaultAxisX);
-      setAxisY(defaultAxisY);
+      setAxisXIndex(defaultAxisXIndex);
+      setAxisYIndex(defaultAxisYIndex);
     },
   }));
 
-  const onToggleAxisX = () => setAxisX((prev) => (prev === -35 ? 45 : -35));
-  const onClickLeft = () => {
-    if (axisY <= minAxisY) return;
-    setAxisY((prev) => prev - 90);
-  };
-  const onClickRight = () => {
-    if (maxAxisY <= axisY) return;
-    setAxisY((prev) => prev + 90);
-  };
+  const onToggleAxisX = useCallback(
+    () => setAxisXIndex((prev) => (prev === 0 ? axisXList.length - 1 : 0)),
+    []
+  );
+  const onClickLeft = useCallback(
+    () =>
+      setAxisYIndex((prev) =>
+        prev === axisYList.length - 1 ? prev : prev + 1
+      ),
+    []
+  );
+  const onClickRight = useCallback(
+    () => setAxisYIndex((prev) => (prev === 0 ? prev : prev - 1)),
+    []
+  );
+
+  const viewportRotations = useMemo<[Axis, number][]>(
+    () => [
+      [Axis.Y, axisYList[rotationHorizontal ? axisYIndex : defaultAxisYIndex]],
+      [Axis.X, axisXList[rotationVertical ? axisXIndex : defaultAxisXIndex]],
+    ],
+    [rotationHorizontal, rotationVertical, axisYIndex, axisXIndex]
+  );
 
   return (
     <div className="root">
-      {settings.rotationHorizontal ? (
+      {rotationHorizontal ? (
         <Button
-          onClick={onClickRight}
-          disabled={maxAxisY <= axisY}
+          onClick={onClickLeft}
+          disabled={axisYIndex === axisYList.length - 1}
           color="none"
         >
-          <FiCornerUpRight size={30} className="button-icon" />
+          <FiCornerUpRight size={30} className={`button-icon-${axisXIndex}`} />
         </Button>
       ) : null}
       <Cube
-        onClick={settings.rotationVertical ? onToggleAxisX : undefined}
-        viewportRotations={[
-          [Axis.Y, axisY],
-          [Axis.X, axisX],
-        ]}
-        width={150}
-        height={150}
+        onClick={rotationVertical ? onToggleAxisX : undefined}
+        viewportRotations={viewportRotations}
+        width={cubeLength}
+        height={cubeLength}
         {...props}
       />
-      {settings.rotationHorizontal ? (
-        <Button
-          onClick={onClickLeft}
-          disabled={!settings.rotationHorizontal || axisY <= minAxisY}
-          color="none"
-        >
-          <FiCornerRightUp size={30} className="button-icon" />
+      {rotationHorizontal ? (
+        <Button onClick={onClickRight} disabled={axisYIndex === 0} color="none">
+          <FiCornerRightUp size={30} className={`button-icon-${axisXIndex}`} />
         </Button>
       ) : null}
       <style jsx>{`
@@ -79,8 +93,11 @@ const RotateCube: ForwardRefRenderFunction<{ reset: () => void }, Props> = (
           justify-content: center;
           align-items: center;
         }
-        .root :global(svg).button-icon {
+        .root :global(svg).button-icon-0 {
           transform: rotate(-45deg);
+        }
+        .root :global(svg).button-icon-1 {
+          transform: scale(1, -1) rotate(-45deg);
         }
       `}</style>
     </div>

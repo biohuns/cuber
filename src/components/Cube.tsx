@@ -9,7 +9,7 @@ type Props = {
 
 export default function Cube({ onClick, ...props }: Props) {
   const cubeRef = useRef<HTMLDivElement>(null);
-  const { settings } = useContext(settingsContext);
+  const { facePattern } = useContext(settingsContext).settings;
 
   const clearCube = useCallback(() => {
     if (!cubeRef.current || !cubeRef.current.children) return;
@@ -20,7 +20,7 @@ export default function Cube({ onClick, ...props }: Props) {
 
   useEffect(() => {
     const { width, height } = cubeRef.current.getBoundingClientRect();
-    const scheme = colorSchemes[settings.facePattern];
+    const scheme = colorSchemes[facePattern];
     cubeSVG(cubeRef.current, {
       width,
       height,
@@ -38,7 +38,7 @@ export default function Cube({ onClick, ...props }: Props) {
       ...props,
     });
     return clearCube;
-  }, [settings.facePattern, props, clearCube]);
+  }, [facePattern, props, clearCube]);
 
   return (
     <div ref={cubeRef} onClick={onClick} className="root">
