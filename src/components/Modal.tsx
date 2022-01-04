@@ -11,25 +11,20 @@ export default function Modal({
   const styles: ReactModal.Styles = {
     overlay: {
       position: "fixed",
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
+      inset: "0 0 0 0",
       backgroundColor: "#00000066",
       zIndex: 10000,
     },
     content: {
       position: "absolute",
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
+      inset: "50% auto auto 50%",
       marginRight: "-25%",
       transform: "translate(-50%, -50%)",
       padding: "16px",
       overflow: "auto",
       color: "var(--text-color)",
       outline: "none",
+      maxHeight: "calc(100vh - 32px)",
     },
   };
 
@@ -37,9 +32,15 @@ export default function Modal({
     <ReactModal
       style={styles}
       className={[className, "glass"].filter(Boolean).join(" ")}
+      bodyOpenClassName="body-open-modal"
       {...props}
     >
       {children}
+      <style jsx>{`
+        :global(.body-open-modal) {
+          overflow: hidden;
+        }
+      `}</style>
     </ReactModal>
   );
 }
