@@ -25,12 +25,12 @@ export const colorSchemes = {
     B: "#418837",
   },
   giiker: {
-    U: "#fdf736",
-    R: "#ffc4d4",
-    F: "#3a9cf7",
-    D: "#faf9ff",
-    L: "#fc6030",
-    B: "#98ffe9",
+    U: "#f6fc06",
+    R: "#fcaab9",
+    F: "#0060b7",
+    D: "#fffff8",
+    L: "#fc5a19",
+    B: "#5bcaa0",
   },
 } as const;
 
