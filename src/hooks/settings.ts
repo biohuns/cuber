@@ -3,6 +3,8 @@ import { FacePattern } from "../entity/cube";
 import { useLocalStorage } from "./localstorage";
 
 type Settings = {
+  rotationHorizontal: boolean;
+  rotationVertical: boolean;
   facePattern: FacePattern;
 };
 
@@ -12,6 +14,8 @@ type SettingsContextValueType = {
 };
 
 const defaultSettings: Settings = {
+  rotationHorizontal: true,
+  rotationVertical: true,
   facePattern: "global",
 };
 

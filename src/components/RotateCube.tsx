@@ -1,11 +1,13 @@
 import {
   forwardRef,
   ForwardRefRenderFunction,
+  useContext,
   useImperativeHandle,
   useState,
 } from "react";
 import { FiCornerRightUp, FiCornerUpRight } from "react-icons/fi";
 import { Axis, ICubeOptions } from "sr-visualizer";
+import { settingsContext } from "../hooks/settings";
 import Button from "./Button";
 import Cube from "./Cube";
 
@@ -20,6 +22,7 @@ const RotateCube: ForwardRefRenderFunction<{ reset: () => void }, Props> = (
   props,
   ref
 ) => {
+  const { settings } = useContext(settingsContext);
   const [axisX, setAxisX] = useState(defaultAxisX);
   const [axisY, setAxisY] = useState(defaultAxisY);
 
@@ -42,11 +45,17 @@ const RotateCube: ForwardRefRenderFunction<{ reset: () => void }, Props> = (
 
   return (
     <div className="root">
-      <Button onClick={onClickRight} disabled={maxAxisY <= axisY} color="none">
-        <FiCornerUpRight size={30} className="button-icon" />
-      </Button>
+      {settings.rotationHorizontal ? (
+        <Button
+          onClick={onClickRight}
+          disabled={maxAxisY <= axisY}
+          color="none"
+        >
+          <FiCornerUpRight size={30} className="button-icon" />
+        </Button>
+      ) : null}
       <Cube
-        onClick={onToggleAxisX}
+        onClick={settings.rotationVertical ? onToggleAxisX : undefined}
         viewportRotations={[
           [Axis.Y, axisY],
           [Axis.X, axisX],
@@ -55,9 +64,15 @@ const RotateCube: ForwardRefRenderFunction<{ reset: () => void }, Props> = (
         height={150}
         {...props}
       />
-      <Button onClick={onClickLeft} disabled={axisY <= minAxisY} color="none">
-        <FiCornerRightUp size={30} className="button-icon" />
-      </Button>
+      {settings.rotationHorizontal ? (
+        <Button
+          onClick={onClickLeft}
+          disabled={!settings.rotationHorizontal || axisY <= minAxisY}
+          color="none"
+        >
+          <FiCornerRightUp size={30} className="button-icon" />
+        </Button>
+      ) : null}
       <style jsx>{`
         .root {
           display: flex;

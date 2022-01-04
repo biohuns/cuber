@@ -4,6 +4,7 @@ import { FacePattern } from "../../entity/cube";
 import { settingsContext } from "../../hooks/settings";
 import Modal from "../Modal";
 import RadioInput from "../RadioInput";
+import SwitchInput from "../SwitchInput";
 import GiikerPatternImg from "./giiker.svg";
 import GlobalPatternImg from "./global.svg";
 import OldJapanPatternImg from "./old-japan.svg";
@@ -37,23 +38,39 @@ export default function SettingModal(props: Props) {
 
   return (
     <Modal {...props}>
-      <div className="root">
-        <h2>Settings</h2>
-        <h3>Face Pattern</h3>
-        <RadioInput
-          name="face-pattern"
-          items={facePatternChoices}
-          defaultValue={settings.facePattern}
-          onChange={(facePattern: FacePattern) => {
-            setSettings({ ...settings, facePattern });
-          }}
-        />
-        <style jsx>{`
-          .root h2 {
-            text-align: center;
-          }
-        `}</style>
-      </div>
+      <h2>Settings</h2>
+      <h3>Rotation</h3>
+      <SwitchInput
+        name="rotation-horizontal"
+        label="Horizontal"
+        defaultChecked={settings.rotationHorizontal}
+        onChange={(rotationHorizontal: boolean) =>
+          setSettings({ ...settings, rotationHorizontal })
+        }
+      />
+      <SwitchInput
+        name="rotation-vertical"
+        label="Vertical"
+        defaultChecked={settings.rotationVertical}
+        onChange={(rotationVertical: boolean) =>
+          setSettings({ ...settings, rotationVertical })
+        }
+      />
+      <h3>Face Pattern</h3>
+      <RadioInput
+        name="face-pattern"
+        items={facePatternChoices}
+        defaultValue={settings.facePattern}
+        onChange={(facePattern: FacePattern) => {
+          setSettings({ ...settings, facePattern });
+        }}
+      />
+      <style jsx>{`
+        h2 {
+          text-align: center;
+          margin-top: 0;
+        }
+      `}</style>
     </Modal>
   );
 }

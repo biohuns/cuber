@@ -20,7 +20,7 @@ export default function RadioInput({
   return (
     <>
       {items.map((item) => (
-        <label key={item.value} className="label">
+        <label key={item.value} className="root">
           <input
             type="radio"
             name={name}
@@ -46,7 +46,7 @@ export default function RadioInput({
       ))}
       <style jsx>{`
         /* @see https://codepen.io/triss90/pen/XNEdRe */
-        .label {
+        .root {
           display: flex;
           justify-content: flex-start;
           align-items: center;
@@ -55,6 +55,9 @@ export default function RadioInput({
 
           --gray-color: #f4f4f4;
           --dark-gray-color: #b4b4b4;
+        }
+        .root:not(:last-child) {
+          margin-bottom: 8px;
         }
         input {
           position: absolute;
@@ -85,7 +88,7 @@ export default function RadioInput({
         }
         .label {
           flex: 1 1;
-          margin-top: 2px;
+          padding-top: 1px;
         }
         .preview {
           flex: 0 0;
