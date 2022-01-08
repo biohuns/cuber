@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { PropsWithChildren } from "react";
 import ReactModal from "react-modal";
 
@@ -31,7 +32,7 @@ export default function Modal({
   return (
     <ReactModal
       style={styles}
-      className={[className, "glass"].filter(Boolean).join(" ")}
+      className={clsx(className, "glass")}
       bodyOpenClassName="body-open-modal"
       {...props}
     >

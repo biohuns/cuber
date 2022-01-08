@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { PropsWithChildren } from "react";
 
 type Props = {
@@ -18,7 +19,7 @@ export default function Button({
     <button
       disabled={disabled}
       onClick={onClick}
-      className={[className, "root", color].filter(Boolean).join(" ")}
+      className={clsx(className, "root", color)}
     >
       {children}
       <style jsx>{`

@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { ReactNode } from "react";
 
 type Props = {
@@ -32,12 +33,10 @@ export default function RadioInput({
           <span className="label">{item.label}</span>
           {item.preview ? (
             <div
-              className={[
+              className={clsx(
                 "preview",
-                item.value === defaultValue ? "glass" : null,
-              ]
-                .filter(Boolean)
-                .join(" ")}
+                item.value === defaultValue && "glass"
+              )}
             >
               {item.preview}
             </div>
