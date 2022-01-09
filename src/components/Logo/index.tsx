@@ -6,11 +6,9 @@ export default function Logo() {
   return (
     <Link href="/" passHref>
       <a className="root">
-        <Image src={LogoImg} alt="logo" />
+        <Image src={LogoImg} width={200} height={200} alt="logo" />
         <style jsx>{`
           .root {
-            width: 200px;
-            height: 200px;
             margin: 0 auto;
           }
         `}</style>
