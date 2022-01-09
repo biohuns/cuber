@@ -24,8 +24,6 @@ export default function Cube({ onClick, ...props }: Props) {
     cubeSVG(cubeRef.current, {
       width,
       height,
-      // Rubik's Cube colors palette
-      // @see https://colorswall.com/palette/171
       colorScheme: {
         [Face.U]: scheme.U,
         [Face.R]: scheme.R,
@@ -34,7 +32,6 @@ export default function Cube({ onClick, ...props }: Props) {
         [Face.L]: scheme.L,
         [Face.B]: scheme.B,
       },
-      stickerOpacity: props.algorithm ? 100 : 0,
       ...props,
     });
     return clearCube;

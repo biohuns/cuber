@@ -15,10 +15,10 @@ import Cube from "./Cube";
 
 const cubeLength = 150;
 
-const axisXList = [-35, 45] as const;
+const axisXList = [-31, 46] as const;
 const defaultAxisXIndex = 0;
 
-const axisYList = [-45, 45, 135] as const;
+const axisYList = [-59, 31, 121] as const;
 const defaultAxisYIndex = 1;
 
 type Props = {} & ICubeOptions;
