@@ -1,24 +1,25 @@
 import { useEffect, useState } from "react";
 
 export function useLocalStorage<T>(key: string, defaultValue: T) {
-  const [value, setValue] = useState(() => {
-    if (!process.browser) return defaultValue;
+  const [value, setValue] = useState(defaultValue);
+
+  useEffect(() => {
     const saved = localStorage.getItem(key);
-    if (!saved) return defaultValue;
+    if (!saved) return;
+
     try {
-      const initial: T = JSON.parse(saved);
-      return initial;
+      const initialValue: T = JSON.parse(saved);
+      setValue(initialValue);
     } catch (e) {
       // eslint-disable-next-line no-console
       console.error(`unexpected ${key} value, error:`, e);
-      return defaultValue;
     }
-  });
+  }, []);
 
-  useEffect(() => {
-    if (!process.browser) return;
+  const setValueWithSave = (value: T) => {
+    setValue(value);
     localStorage.setItem(key, JSON.stringify(value));
-  }, [key, value]);
+  };
 
-  return { value, setValue };
+  return { value, setValue: setValueWithSave };
 }
