@@ -31,18 +31,18 @@ export default function Home() {
               "foot foot";
             max-width: 768px;
           }
-          .root :global(.logo) {
+          .root > :global(.logo) {
             grid-area: head;
           }
-          .root :global(.stopwatch-card) {
+          .root > :global(.stopwatch-card) {
             grid-area: left;
             max-width: 360px;
           }
-          .root :global(.history-card) {
+          .root > :global(.history-card) {
             grid-area: right;
             max-width: 360px;
           }
-          .root :global(.manual-card) {
+          .root > :global(.manual-card) {
             grid-area: foot;
           }
         }

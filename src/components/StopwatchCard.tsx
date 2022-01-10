@@ -1,11 +1,11 @@
 import { HTMLAttributes, useCallback, useRef, useState } from "react";
 import { FiSettings } from "react-icons/fi";
 import { HiPause, HiPlay, HiStop } from "react-icons/hi";
-import useScrambler from "../../hooks/scrambler";
-import useStopwatch from "../../hooks/stopwatch";
-import Button from "../Button";
-import Card from "../Card";
-import RotateCube from "../RotateCube";
+import useScrambler from "../hooks/scrambler";
+import useStopwatch from "../hooks/stopwatch";
+import Button from "./Button";
+import Card from "./Card";
+import RotateCube from "./RotateCube";
 import SettingModal from "./SettingModal";
 
 type Props = {} & HTMLAttributes<HTMLDivElement>;

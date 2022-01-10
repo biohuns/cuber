@@ -2,23 +2,23 @@ import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { HTMLAttributes } from "react";
-import LogoImg from "./logo_transparent.png";
+import LogoImg from "../images/Logo/logo_transparent.png";
 
 type Props = {} & HTMLAttributes<HTMLDivElement>;
 
 export default function Logo({ className, ...props }: Props) {
   return (
     <div className={clsx("root", className)} {...props}>
-      <Link href="/" passHref>
+      <Link href="/">
         <a className="link">
-          <Image src={LogoImg} width={134} height={134} alt="logo" />
+          <Image src={LogoImg} width={134} height={134} alt="CubeStats" />
         </a>
       </Link>
       <style jsx>{`
         .root {
           width: 100%;
         }
-        .root .link {
+        .root > .link {
           display: block;
           width: 134px;
           height: 134px;

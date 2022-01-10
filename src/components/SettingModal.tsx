@@ -1,13 +1,13 @@
 import { ReactNode, useContext } from "react";
 import ReactModal from "react-modal";
-import { FacePattern } from "../../entity/cube";
-import { settingsContext } from "../../hooks/settings";
-import Modal from "../Modal";
-import RadioInput from "../RadioInput";
-import SwitchInput from "../SwitchInput";
-import GiikerPatternImg from "./giiker.svg";
-import GlobalPatternImg from "./global.svg";
-import OldJapanPatternImg from "./old-japan.svg";
+import { FacePattern } from "../entity/cube";
+import { settingsContext } from "../hooks/settings";
+import GiikerPatternImg from "../images/StopwatchCard/giiker.svg";
+import GlobalPatternImg from "../images/StopwatchCard/global.svg";
+import OldJapanPatternImg from "../images/StopwatchCard/old-japan.svg";
+import Modal from "./Modal";
+import RadioInput from "./RadioInput";
+import SwitchInput from "./SwitchInput";
 
 type Props = {} & ReactModal.Props;
 
