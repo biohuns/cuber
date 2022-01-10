@@ -71,6 +71,7 @@ const RotateCube: ForwardRefRenderFunction<{ reset: () => void }, Props> = (
           onClick={onClickLeft}
           disabled={axisYIndex === axisYList.length - 1}
           color="none"
+          className="rotate-button"
         >
           <FiCornerUpRight size={30} className={`button-icon-${axisXIndex}`} />
         </Button>
@@ -83,7 +84,12 @@ const RotateCube: ForwardRefRenderFunction<{ reset: () => void }, Props> = (
         {...props}
       />
       {rotationHorizontal ? (
-        <Button onClick={onClickRight} disabled={axisYIndex === 0} color="none">
+        <Button
+          onClick={onClickRight}
+          disabled={axisYIndex === 0}
+          color="none"
+          className="rotate-button"
+        >
           <FiCornerRightUp size={30} className={`button-icon-${axisXIndex}`} />
         </Button>
       ) : null}
@@ -93,10 +99,10 @@ const RotateCube: ForwardRefRenderFunction<{ reset: () => void }, Props> = (
           justify-content: center;
           align-items: center;
         }
-        .root :global(svg).button-icon-0 {
+        .root > :global(.rotate-button > .button-icon-0) {
           transform: rotate(-45deg);
         }
-        .root :global(svg).button-icon-1 {
+        .root > :global(.rotate-button > .button-icon-1) {
           transform: scale(1, -1) rotate(-45deg);
         }
       `}</style>

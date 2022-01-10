@@ -20,7 +20,7 @@ export default function Header({}: Props) {
           justify-content: space-between;
           z-index: 9999;
         }
-        .root h1 {
+        .root > h1 {
           color: var(--text-color);
           font-family: var(--font-monospace);
           font-size: 1rem;

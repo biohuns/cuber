@@ -18,7 +18,7 @@ export default function Card({ title, className, children, ...props }: Props) {
           min-width: 288px;
           position: relative;
         }
-        .root .header {
+        .root > .header {
           font-family: var(--font-monospace);
           font-size: 1.4rem;
           font-weight: bold;

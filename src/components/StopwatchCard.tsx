@@ -41,12 +41,12 @@ export default function StopwatchCard(props: Props) {
         <div className="time">{durationFormat(state.count)}</div>
         <div className="buttons">
           {!state.isRunning ? (
-            <Button onClick={start} color="green">
+            <Button onClick={start} color="green" className="button">
               <HiPlay size={20} />
               <span className="button-text">Start</span>
             </Button>
           ) : (
-            <Button onClick={pause} color="orange">
+            <Button onClick={pause} color="orange" className="button">
               <HiPause size={20} />
               <span className="button-text">Pause</span>
             </Button>
@@ -55,6 +55,7 @@ export default function StopwatchCard(props: Props) {
             onClick={onReset}
             disabled={!state.isRunning && state.count === 0}
             color="red"
+            className="button"
           >
             <HiStop size={20} />
             <span className="button-text">Reset</span>
@@ -65,31 +66,31 @@ export default function StopwatchCard(props: Props) {
           onRequestClose={() => setSettingIsOpen(false)}
         />
         <style jsx>{`
-          .root :global(.setting-button) {
+          .root > :global(.setting-button) {
             color: white;
             position: absolute;
             top: 8px;
             right: 8px;
           }
-          .cube {
+          .root > .cube {
             margin-bottom: 8px;
           }
-          .scramble {
+          .root > .scramble {
             font-size: 1.2rem;
             text-align: center;
             margin-bottom: 16px;
           }
-          .time {
+          .root > .time {
             font-family: var(--font-monospace);
             font-size: 2.4rem;
             margin-bottom: 8px;
             text-align: center;
           }
-          .buttons {
+          .root > .buttons {
             display: flex;
             justify-content: center;
           }
-          .button-text {
+          .root > .buttons > :global(.button) .button-text {
             font-family: var(--font-monospace);
             margin-left: 2px;
           }

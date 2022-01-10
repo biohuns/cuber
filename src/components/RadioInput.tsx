@@ -58,11 +58,11 @@ export default function RadioInput({
         .root:not(:last-child) {
           margin-bottom: 8px;
         }
-        input {
+        .root > input {
           position: absolute;
           opacity: 0;
         }
-        .radio {
+        .root > .radio {
           flex: 0 0 21px;
           width: 21px;
           height: 21px;
@@ -72,24 +72,24 @@ export default function RadioInput({
           border-radius: 100%;
           transition: all 250ms ease;
         }
-        input:checked + .radio {
+        .root > input:checked + .radio {
           background-color: var(--accent-color);
           box-shadow: inset 0 0 0 4px var(--gray-color);
         }
-        input:focus + .radio {
+        .root > input:focus + .radio {
           outline: none;
           border-color: var(--accent-color);
         }
-        input:disabled + .radio {
+        .root > input:disabled + .radio {
           box-shadow: inset 0 0 0 4px var(--gray-color);
           border-color: var(--dark-gray-color);
           background: var(--dark-gray-color);
         }
-        .label {
+        .root > .label {
           flex: 1 1;
           padding-top: 1px;
         }
-        .preview {
+        .root > .preview {
           flex: 0 0;
           border: 1px solid transparent;
         }

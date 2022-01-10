@@ -30,15 +30,15 @@ export default function SwitchInput({
           cursor: pointer;
           margin-bottom: 8px;
         }
-        input {
+        .root > input {
           position: absolute;
           opacity: 0;
         }
-        .label {
+        .root > .label {
           flex: 1 1;
           padding-top: 1px;
         }
-        .switch {
+        .root > .switch {
           flex: 0 0 40px;
           width: 40px;
           height: 20px;
@@ -48,7 +48,7 @@ export default function SwitchInput({
           border-radius: 10px;
           transition: all 250ms ease;
         }
-        .switch:after {
+        .root > .switch:after {
           content: "";
           position: absolute;
           width: 20px;
@@ -60,10 +60,10 @@ export default function SwitchInput({
           box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
           transition: all 250ms ease;
         }
-        input:checked + * + .switch {
+        .root > input:checked + * + .switch {
           background-color: var(--accent-color);
         }
-        input:checked + * + .switch:after {
+        .root > input:checked + * + .switch:after {
           left: 20px;
         }
       `}</style>

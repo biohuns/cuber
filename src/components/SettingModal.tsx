@@ -38,39 +38,41 @@ export default function SettingModal(props: Props) {
 
   return (
     <Modal {...props}>
-      <h2>Settings</h2>
-      <h3>Rotation</h3>
-      <SwitchInput
-        name="rotation-horizontal"
-        label="Horizontal"
-        defaultChecked={settings.rotationHorizontal}
-        onChange={(rotationHorizontal: boolean) =>
-          setSettings({ ...settings, rotationHorizontal })
-        }
-      />
-      <SwitchInput
-        name="rotation-vertical"
-        label="Vertical"
-        defaultChecked={settings.rotationVertical}
-        onChange={(rotationVertical: boolean) =>
-          setSettings({ ...settings, rotationVertical })
-        }
-      />
-      <h3>Face Pattern</h3>
-      <RadioInput
-        name="face-pattern"
-        items={facePatternChoices}
-        defaultValue={settings.facePattern}
-        onChange={(facePattern: FacePattern) => {
-          setSettings({ ...settings, facePattern });
-        }}
-      />
-      <style jsx>{`
-        h2 {
-          text-align: center;
-          margin-top: 0;
-        }
-      `}</style>
+      <div className="root">
+        <h2>Settings</h2>
+        <h3>Rotation</h3>
+        <SwitchInput
+          name="rotation-horizontal"
+          label="Horizontal"
+          defaultChecked={settings.rotationHorizontal}
+          onChange={(rotationHorizontal: boolean) =>
+            setSettings({ ...settings, rotationHorizontal })
+          }
+        />
+        <SwitchInput
+          name="rotation-vertical"
+          label="Vertical"
+          defaultChecked={settings.rotationVertical}
+          onChange={(rotationVertical: boolean) =>
+            setSettings({ ...settings, rotationVertical })
+          }
+        />
+        <h3>Face Pattern</h3>
+        <RadioInput
+          name="face-pattern"
+          items={facePatternChoices}
+          defaultValue={settings.facePattern}
+          onChange={(facePattern: FacePattern) => {
+            setSettings({ ...settings, facePattern });
+          }}
+        />
+        <style jsx>{`
+          .root > h2 {
+            text-align: center;
+            margin-top: 0;
+          }
+        `}</style>
+      </div>
     </Modal>
   );
 }

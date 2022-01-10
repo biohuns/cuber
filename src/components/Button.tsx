@@ -19,7 +19,7 @@ export default function Button({
     <button
       disabled={disabled}
       onClick={onClick}
-      className={clsx(className, "root", color)}
+      className={clsx("root", `color-${color}`, className)}
     >
       {children}
       <style jsx>{`
@@ -32,51 +32,51 @@ export default function Button({
           justify-content: center;
           align-items: center;
         }
-        .root:disabled,
-        .root:hover:disabled {
+        .root.color-default {
+          background-color: #ffffff0f;
+          border: 1px solid #ffffff1a;
+        }
+        .root.color-default:hover {
+          background-color: #ffffff32;
+        }
+        .root.color-red {
+          background-color: #ff000077;
+          border: 1px solid #ff000099;
+        }
+        .root.color-red:hover {
+          background-color: #ff0000aa;
+        }
+        .root.color-green {
+          background-color: #00aa1177;
+          border: 1px solid #00aa1199;
+        }
+        .root.color-green:hover {
+          background-color: #00aa11aa;
+        }
+        .root.color-blue {
+          background-color: #005eff77;
+          border: 1px solid #005eff99;
+        }
+        .root.color-blue:hover {
+          background-color: #005effaa;
+        }
+        .root.color-orange {
+          background-color: #ffa50077;
+          border: 1px solid #ffa50099;
+        }
+        .root.color-orange:hover {
+          background-color: #ffa500aa;
+        }
+        .root[class*="color-"]:disabled,
+        .root[class*="color-"]:disabled:hover {
           background-color: #33333377;
           border: 1px solid #33333399;
           color: #575757;
         }
-        .default {
-          background-color: #ffffff0f;
-          border: 1px solid #ffffff1a;
-        }
-        .default:hover {
-          background-color: #ffffff32;
-        }
-        .red {
-          background-color: #ff000077;
-          border: 1px solid #ff000099;
-        }
-        .red:hover {
-          background-color: #ff0000aa;
-        }
-        .green {
-          background-color: #00aa1177;
-          border: 1px solid #00aa1199;
-        }
-        .green:hover {
-          background-color: #00aa11aa;
-        }
-        .blue {
-          background-color: #005eff77;
-          border: 1px solid #005eff99;
-        }
-        .blue:hover {
-          background-color: #005effaa;
-        }
-        .orange {
-          background-color: #ffa50077;
-          border: 1px solid #ffa50099;
-        }
-        .orange:hover {
-          background-color: #ffa500aa;
-        }
-        .none,
-        .none:hover,
-        .none:disabled,
-        .none:hover:disabled {
+        .root.color-none,
+        .root.color-none:hover,
+        .root.color-none:disabled,
+        .root.color-none:disabled:hover {
           background: none;
           border: none;
         }
