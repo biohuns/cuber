@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { HTMLAttributes, useCallback, useRef, useState } from "react";
 import { FiSettings } from "react-icons/fi";
 import { HiPause, HiPlay, HiStop } from "react-icons/hi";
 import useScrambler from "../../hooks/scrambler";
@@ -8,9 +8,9 @@ import Card from "../Card";
 import RotateCube from "../RotateCube";
 import SettingModal from "./SettingModal";
 
-type Props = {};
+type Props = {} & HTMLAttributes<HTMLDivElement>;
 
-export default function StopwatchCard({}: Props) {
+export default function StopwatchCard(props: Props) {
   const rotateCubeRef = useRef<{ reset: () => void }>();
   const { state, start, pause, reset } = useStopwatch();
   const durationFormat = useDurationFormat();
@@ -24,7 +24,7 @@ export default function StopwatchCard({}: Props) {
   };
 
   return (
-    <Card title="Stopwatch">
+    <Card title="Stopwatch" {...props}>
       <div className="root">
         <Button
           color="none"

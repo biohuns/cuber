@@ -1,10 +1,14 @@
-import { ReactNode } from "react";
+import clsx from "clsx";
+import { HTMLAttributes, ReactNode } from "react";
 
-type Props = { title?: string; children: ReactNode };
+type Props = {
+  title?: string;
+  children: ReactNode;
+} & HTMLAttributes<HTMLDivElement>;
 
-export default function Card({ title, children }: Props) {
+export default function Card({ title, className, children, ...props }: Props) {
   return (
-    <div className="root glass">
+    <div className={clsx("root", "glass", className)} {...props}>
       {title ? <div className="header">{title}</div> : null}
       {children}
       <style jsx>{`
